@@ -1,0 +1,48 @@
+<template name="View">
+    {{> backToList }}
+    <h1>View patient details</h1>
+    <h2>Base attributes</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{{patient.name}}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>{{dateFormat patient.dateOfBirth}}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{patientGender patient.gender}}</td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td>{{dateTimeFormat patient.createdAt}}</td>
+                </tr>
+                <tr>
+                    <th>Updated At</th>
+                    <td>{{dateTimeFormat patient.updatedAt}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{#if hasCustomAttributes}}
+        <h2>Custom attributes</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    {{#each attribute in patient.customAttributes}}
+                        <tr>
+                            <th>{{attribute.name}}</th>
+                            <td>{{attribute.value}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
+    <a class="btn btn-primary" href="{{pathFor route='home'}}">Back to List</a>
+    <a class="btn btn-default" href="{{pathFor route='edit' data=patient}}">Edit</a>
+</template>

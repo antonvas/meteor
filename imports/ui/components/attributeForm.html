@@ -1,0 +1,52 @@
+<template name="attributeForm">
+    <tr>
+        {{#if edit}}
+            <td>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="attribute-name-{{index}}"
+                        placeholder="Attribute Label"
+                        name="attribute_name_{{index}}"
+                        value="{{attribute.name}}"
+                    />
+                </div>
+            </td>
+            <td colspan="2">
+                <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="attribute-value-{{index}}"
+                        placeholder="Attribute Value"
+                        name="attribute_value_{{index}}"
+                        value="{{attribute.value}}"
+                    />
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary attribute-save">
+                    {{#if isNew}}Add{{else}}Save{{/if}} attribute
+                </button>
+                {{#unless isNew}}
+                    <button type="button" class="btn btn-default attribute-cancel-edit">
+                        Cancel
+                    </button>
+                {{/unless}}
+            </td>
+        {{else}}
+            <th class="attribute-name">{{attribute.name}}</th>
+            <td class="attribute-value">{{attribute.value}}</td>
+            <td>{{dateFormat attribute.updatedAt}}</td>
+            <td>
+                <button type="button" class="btn btn-default attribute-edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn btn-default attribute-delete">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        {{/if}}
+    </tr>
+</template>

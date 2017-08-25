@@ -1,0 +1,11 @@
+<template name="patientInfo">
+    <tr>
+        <td>{{name}}</td>
+        <td>{{dateFormat dateOfBirth}}</td>
+        <td>
+            <a class="btn btn-default" href="{{pathFor route='view' data=getData}}"><span class="glyphicon glyphicon-eye-open"></span></a>
+            <a class="btn btn-default" href="{{pathFor route='edit' data=getData}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <button class="btn btn-default delete"><span class="glyphicon glyphicon-remove"></span></button>
+        </td>
+    </tr>
+</template>

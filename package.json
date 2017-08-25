@@ -1,0 +1,16 @@
+{
+  "name": "patients-system",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "bootstrap": "^4.0.0-beta",
+    "meteor-node-stubs": "~0.2.4"
+  },
+  "devDependencies": {
+    "chai-spies": "^0.7.1",
+    "mocha": "^3.5.0"
+  }
+}

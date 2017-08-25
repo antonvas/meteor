@@ -1,0 +1,69 @@
+<template name="patientForm">
+    <h2>Base attributes</h2>
+    <form class="patient-form">
+        <div class="form-group">
+            <label for="patientName">Patient Name</label>
+            <input
+                class="form-control"
+                id="patientName"
+                placeholder="Name"
+                name="name"
+                value="{{patient.name}}"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="patientBirthDate">Patient Birth Date</label>
+            <input
+                type="date"
+                class="form-control"
+                id="patientBirthDate"
+                placeholder="Date of Birth"
+                name="dateOfBirth"
+                value="{{#if patient.dateOfBirth}}{{dateToInput patient.dateOfBirth}}{{/if}}"
+            />
+        </div>
+
+        <div class="form-group">
+            <label>Patient Gender</label>
+            <select class="form-control" name="gender">
+                {{#each option in genders}}
+                    <option
+                        value="{{option.value}}"
+                        selected="{{isPatientGender option.value}}"
+                    >
+                        {{option.text}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <h2>Custom attributes</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each attribute in customAttributes}}
+                    {{> attributeForm index=@index onSubmit=updateAttribute attribute=attribute}}
+                    {{/each}}
+                    {{> attributeForm isNew=true index=false onSubmit=updateAttribute}}
+                </tbody>
+            </table>
+        </div>
+
+        {{#if patient._id}}
+            <button type="submit" class="btn btn-primary">Save patient info</button>
+            <a class="btn btn-default" href="{{pathFor route='home'}}">Cancel</a>
+        {{ else }}
+            <button type="submit" class="btn btn-primary">Add patient</button>
+        {{/if}}
+    </form>
+</template>

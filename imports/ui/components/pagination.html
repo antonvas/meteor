@@ -1,0 +1,15 @@
+<template name="pagination">
+    {{#if showPagination}}
+        <div class="btn-group" role="group">
+            {{#each page in pages}}
+                <a
+                    href="#{{page}}"
+                    rel="{{page}}"
+                    class="btn {{#if isActive page}}btn-primary{{else}}btn-default{{/if}}"
+                >
+                    {{page}}
+                </a>
+            {{/each}}
+        </div>
+    {{/if}}
+</template>
